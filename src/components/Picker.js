@@ -147,7 +147,8 @@ function Picker({
     rtl = false,
     dropDownDirection = DROPDOWN_DIRECTION.DEFAULT,
     disableLocalSearch = false,
-    theme = THEMES.DEFAULT
+    theme = THEMES.DEFAULT,
+    TouchableContainer = TouchableOpacity
 }) {
     const [necessaryItems, setNecessaryItems] = useState([]);
     const [searchText, setSearchText] = useState('');
@@ -1365,9 +1366,9 @@ function Picker({
             Component = <Image source={ICON.CLOSE} style={_closeIconStyle} />;
 
         return (
-            <TouchableOpacity style={_closeIconContainerStyle} onPress={onPressClose}>
+            <TouchableContainer style={_closeIconContainerStyle} onPress={onPressClose}>
                 {Component}
-            </TouchableOpacity>
+            </TouchableContainer>
         );
     }, [listMode, CloseIconComponent, _closeIconStyle, _closeIconContainerStyle, onPressClose, ICON]);
 
@@ -1575,10 +1576,10 @@ function Picker({
 
     return (
         <View style={_containerStyle} {...containerProps}>
-            <TouchableOpacity style={_style} onPress={__onPress} onLayout={__onLayout} {...props} ref={onRef} pointerEvents={pointerEvents} disabled={disabled}>
+            <TouchableContainer style={_style} onPress={__onPress} onLayout={__onLayout} {...props} ref={onRef} pointerEvents={pointerEvents} disabled={disabled}>
                 {_BodyComponent}
                 {_ArrowComponent}
-            </TouchableOpacity>
+            </TouchableContainer>
             {DropDownBodyComponent}
         </View>
     );
